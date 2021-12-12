@@ -1,19 +1,32 @@
+// pipeline {
+//   agent { dockerfile true }
+//   stages {
+//     stage('Install dependencies') {
+//       steps {
+//         sh 'npm install'
+//       }
+//     }
+//     stage('Lint') {
+//       steps {
+//         sh 'ng lint'
+//       }
+//     }
+//     stage('Build') {
+//       steps {
+//         sh 'ng build'
+//       }
+//     }
+//   }
+// }
+
 pipeline {
-  agent { dockerfile true }
+  agent {
+    docker { image 'node:16.13.1-alpine' }
+  }
   stages {
-    stage('Install dependencies') {
+    stage('Test') {
       steps {
-        sh 'npm install'
-      }
-    }
-    stage('Lint') {
-      steps {
-        sh 'ng lint'
-      }
-    }
-    stage('Build') {
-      steps {
-        sh 'ng build'
+          sh 'node --version'
       }
     }
   }
