@@ -1,8 +1,7 @@
 FROM node:16.13.1-alpine
 WORKDIR /app
 
-ENV PORT=3333
-EXPOSE 3000
+EXPOSE 80
 COPY ./dist .
 RUN npm install
 
