@@ -1,7 +1,6 @@
 pipeline {
-  agent {
-    docker { image 'node:16.13.1-alpine' }
-  }
+  agent { dockerfile true }
+
   stages {
     stage('Install dependencies') {
       steps {
@@ -10,12 +9,12 @@ pipeline {
     }
     stage('Lint') {
       steps {
-        sh 'ng lint'
+        sh 'npm run lint'
       }
     }
     stage('Build') {
       steps {
-        sh 'ng build'
+        sh 'npm run build'
       }
     }
   }
