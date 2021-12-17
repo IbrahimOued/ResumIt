@@ -1,6 +1,5 @@
 pipeline {
-  agent { dockerfile true }
-
+  agent any
   stages {
     stage('Install dependencies') {
       steps {
@@ -16,6 +15,11 @@ pipeline {
       steps {
         sh 'npm run build'
       }
+    }
+    stage('Build docker')
+    agent { dockerfile true}
+    steps {
+      sh 'echo success'
     }
   }
 }
