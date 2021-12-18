@@ -13,13 +13,8 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'npm run build'
+        sh 'npm run build --prod'
       }
-    }
-    stage('Build docker')
-    agent { dockerfile true}
-    steps {
-      sh 'echo success'
     }
   }
 }
