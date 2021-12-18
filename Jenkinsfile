@@ -16,5 +16,11 @@ pipeline {
         sh 'npm run build --prod'
       }
     }
+    stage('Run docker'){
+      steps {
+        sh 'docker build --tag resumit .'
+        sh 'docker run --publish 80:80 --detach resumit'
+      }
+    }
   }
 }
